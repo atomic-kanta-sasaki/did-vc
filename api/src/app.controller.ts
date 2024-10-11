@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { VerifiedCredential } from 'did-jwt-vc';
 
 type VerifyVc = {
   vc: string;
@@ -32,7 +31,7 @@ export class AppController {
   }
 
   @Post('/verifyVc')
-  async verifyVc(@Body() body: VerifyVc): Promise<VerifiedCredential> {
+  async verifyVc(@Body() body: VerifyVc): Promise<boolean> {
     return await this.appService.verifyVc(body.vc);
   }
 }
