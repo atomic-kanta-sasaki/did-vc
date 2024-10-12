@@ -11,7 +11,7 @@ export const VefiryVC: React.FC = () => {
     setVc(e.target.value);
   };
   const handleSumit = async () => {
-    const res  = await axios.post("http://localhost:3000/verifyVc", {
+    const res = await axios.post("http://localhost:3000/verifyVc", {
       vc,
     });
     setResult(res.data);

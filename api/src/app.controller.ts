@@ -3,13 +3,13 @@ import { AppService } from './app.service';
 
 type VerifyVc = {
   vc: string;
-}
+};
 
 type IssueVc = {
   hodlerAddress: string;
   type: string;
   name: string;
-}
+};
 
 @Controller()
 export class AppController {
@@ -27,7 +27,11 @@ export class AppController {
 
   @Post('/issueVc')
   async issueVc(@Body() body: IssueVc): Promise<string> {
-    return await this.appService.issueVc(body.hodlerAddress, body.type, body.name);
+    return await this.appService.issueVc(
+      body.hodlerAddress,
+      body.type,
+      body.name,
+    );
   }
 
   @Post('/verifyVc')
