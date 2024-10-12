@@ -44,7 +44,6 @@ export const Issue: React.FC = () => {
             <TextField fullWidth label="学類" id="fullWidth" onChange={handleTypeChange}/>
             <TextField fullWidth label="学位" id="fullWidth" onChange={handleNameChange}/>
             <Button onClick={handleSumit} variant="contained">送信</Button>
-
           </Box>
         </div>
     )
