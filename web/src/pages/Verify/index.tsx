@@ -2,23 +2,19 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import axios from "axios";
 
 export const VefiryVC: React.FC = () => {
   const [vc, setVc] = useState("");
+  const [result, setResult] = useState(false);
   const handleVcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVc(e.target.value);
   };
   const handleSumit = async () => {
-    const res = await fetch("http://localhost:3000/verifyVc", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        vc,
-      }),
+    const res  = await axios.post("http://localhost:3000/verifyVc", {
+      vc,
     });
-    console.log(await res.json());
+    setResult(res.data);
   };
   return (
     <div>
@@ -34,6 +30,8 @@ export const VefiryVC: React.FC = () => {
           送信
         </Button>
       </Box>
+      <h2>検証結果</h2>
+      <p>{result ? "OK" : "NG"}</p>
     </div>
   );
 };

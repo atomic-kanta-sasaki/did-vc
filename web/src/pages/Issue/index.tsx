@@ -2,11 +2,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import axios from "axios";
+import { Typography } from "@mui/material";
 
 export const Issue: React.FC = () => {
   const [hodlerAddress, setHolderAddress] = useState("");
   const [type, setType] = useState("");
   const [name, setName] = useState("");
+  const [vc, setVc] = useState("");
 
   const handleHolderAddressChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -23,18 +26,12 @@ export const Issue: React.FC = () => {
   };
 
   const handleSumit = async () => {
-    const res = await fetch("http://localhost:3000/issueVc", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        hodlerAddress,
-        type,
-        name,
-      }),
+    const res = await axios.post("http://localhost:3000/issueVc", {
+      hodlerAddress,
+      type,
+      name,
     });
-    console.log(await res.json());
+    setVc(res.data);
   };
 
   return (
@@ -63,6 +60,9 @@ export const Issue: React.FC = () => {
           送信
         </Button>
       </Box>
+
+      <h2>発行されたVC</h2>
+      <Typography>{vc}</Typography>
     </div>
   );
 };
