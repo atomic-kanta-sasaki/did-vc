@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import axios from "axios";
 import { Typography } from "@mui/material";
+import { styled } from "@mui/material";
 
 export const Issue: React.FC = () => {
   const [hodlerAddress, setHolderAddress] = useState("");
@@ -34,35 +35,41 @@ export const Issue: React.FC = () => {
     setVc(res.data);
   };
 
-  return (
-    <div>
-      <h1>VC発行</h1>
-      <Box sx={{ width: 500, maxWidth: "100%" }}>
-        <TextField
-          fullWidth
-          label="VC送信先アドレス"
-          id="fullWidth"
-          onChange={handleHolderAddressChange}
-        />
-        <TextField
-          fullWidth
-          label="学類"
-          id="fullWidth"
-          onChange={handleTypeChange}
-        />
-        <TextField
-          fullWidth
-          label="学位"
-          id="fullWidth"
-          onChange={handleNameChange}
-        />
-        <Button onClick={handleSumit} variant="contained">
-          送信
-        </Button>
-      </Box>
+  const Container = styled("div")({
+    display: "flex",
+    justifyContent: "center",
+  });
 
-      <h2>発行されたVC</h2>
-      <Typography>{vc}</Typography>
-    </div>
+  return (
+    <Container>
+      <div>
+        <h1>VC発行</h1>
+        <Box sx={{ width: 500, maxWidth: "100%" }}>
+          <TextField
+            fullWidth
+            label="VC送信先アドレス"
+            id="fullWidth"
+            onChange={handleHolderAddressChange}
+          />
+          <TextField
+            fullWidth
+            label="学類"
+            id="fullWidth"
+            onChange={handleTypeChange}
+          />
+          <TextField
+            fullWidth
+            label="学位"
+            id="fullWidth"
+            onChange={handleNameChange}
+          />
+          <Button onClick={handleSumit} variant="contained">
+            送信
+          </Button>
+        </Box>
+        <h2>発行されたVC</h2>
+        <Typography>{vc}</Typography>
+      </div>
+    </Container>
   );
 };

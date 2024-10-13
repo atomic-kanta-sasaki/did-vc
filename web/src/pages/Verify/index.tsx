@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { styled } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 
@@ -16,7 +17,13 @@ export const VefiryVC: React.FC = () => {
     });
     setResult(res.data);
   };
+
+  const Container = styled("div")({
+    display: "flex",
+    justifyContent: "center",
+  });
   return (
+    <Container>
     <div>
       <h1>VC検証</h1>
       <Box sx={{ width: 500, maxWidth: "100%" }}>
@@ -33,5 +40,6 @@ export const VefiryVC: React.FC = () => {
       <h2>検証結果</h2>
       <p>{result ? "OK" : "NG"}</p>
     </div>
+    </Container>
   );
 };
