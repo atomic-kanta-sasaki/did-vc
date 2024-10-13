@@ -21,9 +21,8 @@ export const VefiryVC: React.FC = () => {
   const Container = styled("div")({
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     height: "100vh",
-    flexDirection: "column",
+    alignItems: "center",
   });
   return (
     <Container>
