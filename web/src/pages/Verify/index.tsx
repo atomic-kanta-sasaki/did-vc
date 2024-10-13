@@ -22,29 +22,29 @@ export const VefiryVC: React.FC = () => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    height: "100vh",
+    flexDirection: "column",
   });
   return (
     <Container>
-      <div>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
-              <h1>VC検証</h1>
-              <Box sx={{ width: 500, maxWidth: "100%" }}>
-                <TextField
-                  fullWidth
-                  label="VC"
-                  id="fullWidth"
-                  onChange={handleVcChange}
-                />
-                <Button onClick={handleSumit} variant="contained">
-                  送信
-                </Button>
-              </Box>
-              <h2>検証結果</h2>
-              <p>{result ? "OK" : "NG"}</p>
-          </CardContent>
-        </Card>
-      </div>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+            <h1>VC検証</h1>
+            <Box sx={{ width: 500, maxWidth: "100%" }}>
+              <TextField
+                fullWidth
+                label="VC"
+                id="fullWidth"
+                onChange={handleVcChange}
+              />
+              <Button onClick={handleSumit} variant="contained">
+                送信
+              </Button>
+            </Box>
+            <h2>検証結果</h2>
+            <p>{result ? "OK" : "NG"}</p>
+        </CardContent>
+      </Card>
     </Container>
   );
 };
