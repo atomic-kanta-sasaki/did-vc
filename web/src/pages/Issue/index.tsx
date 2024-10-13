@@ -47,32 +47,32 @@ export const Issue: React.FC = () => {
     <Container>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-            <h1>VC発行</h1>
-            <Box sx={{ width: 500, maxWidth: "100%" }}>
-              <TextField
-                fullWidth
-                label="VC送信先アドレス"
-                id="fullWidth"
-                onChange={handleHolderAddressChange}
-              />
-              <TextField
-                fullWidth
-                label="学類"
-                id="fullWidth"
-                onChange={handleTypeChange}
-              />
-              <TextField
-                fullWidth
-                label="学位"
-                id="fullWidth"
-                onChange={handleNameChange}
-              />
-              <Button onClick={handleSumit} variant="contained">
-                送信
-              </Button>
-            </Box>
-            <h2>発行されたVC</h2>
-            <Typography>{vc}</Typography>
+          <h1>VC発行</h1>
+          <Box sx={{ width: 500, maxWidth: "100%" }}>
+            <TextField
+              fullWidth
+              label="VC送信先アドレス"
+              id="fullWidth"
+              onChange={handleHolderAddressChange}
+            />
+            <TextField
+              fullWidth
+              label="学類"
+              id="fullWidth"
+              onChange={handleTypeChange}
+            />
+            <TextField
+              fullWidth
+              label="学位"
+              id="fullWidth"
+              onChange={handleNameChange}
+            />
+            <Button onClick={handleSumit} variant="contained">
+              送信
+            </Button>
+          </Box>
+          <h2>発行されたVC</h2>
+          <Typography>{vc}</Typography>
         </CardContent>
       </Card>
     </Container>

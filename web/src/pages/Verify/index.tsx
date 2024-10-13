@@ -29,20 +29,20 @@ export const VefiryVC: React.FC = () => {
     <Container>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-            <h1>VC検証</h1>
-            <Box sx={{ width: 500, maxWidth: "100%" }}>
-              <TextField
-                fullWidth
-                label="VC"
-                id="fullWidth"
-                onChange={handleVcChange}
-              />
-              <Button onClick={handleSumit} variant="contained">
-                送信
-              </Button>
-            </Box>
-            <h2>検証結果</h2>
-            <p>{result ? "OK" : "NG"}</p>
+          <h1>VC検証</h1>
+          <Box sx={{ width: 500, maxWidth: "100%" }}>
+            <TextField
+              fullWidth
+              label="VC"
+              id="fullWidth"
+              onChange={handleVcChange}
+            />
+            <Button onClick={handleSumit} variant="contained">
+              送信
+            </Button>
+          </Box>
+          <h2>検証結果</h2>
+          <p>{result ? "OK" : "NG"}</p>
         </CardContent>
       </Card>
     </Container>
