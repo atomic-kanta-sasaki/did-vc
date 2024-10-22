@@ -36,7 +36,9 @@ export class AppController {
   }
 
   @Post('/verifyVc')
-  async verifyVc(@Body() body: VerifyVc): Promise<VerifiedCredential | boolean>  {
+  async verifyVc(
+    @Body() body: VerifyVc,
+  ): Promise<VerifiedCredential | boolean> {
     return await this.appService.verifyVc(body.vc);
   }
 }
