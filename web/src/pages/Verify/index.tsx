@@ -5,9 +5,16 @@ import { Card, CardContent, styled } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 
+const Container = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  height: "100vh",
+  alignItems: "center",
+});
+
 export const VefiryVC: React.FC = () => {
   const [vc, setVc] = useState("");
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState("");
   const handleVcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVc(e.target.value);
   };
@@ -15,15 +22,9 @@ export const VefiryVC: React.FC = () => {
     const res = await axios.post("http://localhost:3000/verifyVc", {
       vc,
     });
-    setResult(res.data);
+    setResult(JSON.stringify(res.data));
   };
 
-  const Container = styled("div")({
-    display: "flex",
-    justifyContent: "center",
-    height: "100vh",
-    alignItems: "center",
-  });
   return (
     <Container>
       <Card sx={{ minWidth: 275 }}>
@@ -41,7 +42,7 @@ export const VefiryVC: React.FC = () => {
             </Button>
           </Box>
           <h2>検証結果</h2>
-          <p>{result ? "OK" : "NG"}</p>
+          <p>{result}</p>
         </CardContent>
       </Card>
     </Container>
