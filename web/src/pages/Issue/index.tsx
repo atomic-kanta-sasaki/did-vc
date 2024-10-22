@@ -6,6 +6,13 @@ import axios from "axios";
 import { Card, CardContent, Typography } from "@mui/material";
 import { styled } from "@mui/material";
 
+const Container = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "100vh",
+});
+
 export const Issue: React.FC = () => {
   const [hodlerAddress, setHolderAddress] = useState("");
   const [type, setType] = useState("");
@@ -35,13 +42,6 @@ export const Issue: React.FC = () => {
     setVc(res.data);
   };
 
-  const Container = styled("div")({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-  });
-
   return (
     <Container>
       <Card sx={{ minWidth: 275 }}>
@@ -51,19 +51,22 @@ export const Issue: React.FC = () => {
             <TextField
               fullWidth
               label="VC送信先アドレス"
-              id="fullWidth"
+              id="hodlerAddress"
+              value={hodlerAddress}
               onChange={handleHolderAddressChange}
             />
             <TextField
               fullWidth
               label="学類"
-              id="fullWidth"
+              id="type"
+              value={type}
               onChange={handleTypeChange}
             />
             <TextField
               fullWidth
               label="学位"
-              id="fullWidth"
+              id="name"
+              value={name}
               onChange={handleNameChange}
             />
             <Button onClick={handleSumit} variant="contained">
