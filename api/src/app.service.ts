@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Resolver } from 'did-resolver';
 import { getResolver } from 'ethr-did-resolver';
-import { verifyCredential } from 'did-jwt-vc';
+import { VerifiedCredential, verifyCredential } from 'did-jwt-vc';
 import { EthrDID, KeyPair } from 'ethr-did';
 import { ethers, Wallet } from 'ethers';
 @Injectable()
@@ -112,7 +112,7 @@ export class AppService {
     return vc;
   }
 
-  async verifyVc(vc: string): Promise<boolean> {
+  async verifyVc(vc: string): Promise<VerifiedCredential | boolean> {
     const providerConfig = {
       // While experimenting, you can set a rpc endpoint to be used by the web3 provider
       rpcUrl: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
@@ -128,8 +128,8 @@ export class AppService {
     const ethrDidResolver = getResolver(providerConfig);
     const didResolver = new Resolver(ethrDidResolver);
     try {
-      await verifyCredential(vc, didResolver);
-      return true;
+      const result = await verifyCredential(vc, didResolver);
+      return result;
     } catch (error) {
       return false;
     }
