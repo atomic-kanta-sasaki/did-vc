@@ -16,7 +16,7 @@ export class AppService {
     };
 
     const ethrDidResolver = getResolver(providerConfig);
-    const didResolver = new Resolver(ethrDidResolver);
+    const didResolver = new Resolver({...ethrDidResolver});
 
     didResolver
       .resolve('did:ethr:sepolia:0x4D044d473b590169467DD2B6291F4273e2951d58')
